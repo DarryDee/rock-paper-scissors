@@ -33,7 +33,10 @@ function playRound(playerSelection, computerSelection) {
     (playerchoice === computerSelection) ? console.log("It`s a tie"):
     ((playerchoice === "paper")&&(computerSelection === "rock")) ? console.log("PLAYER WON!") :
     ((playerchoice === "scissors")&&(computerSelection === "paper")) ? console.log("PLAYER WON!"):
+    ((playerchoice === "rock")&&(computerSelection === "scissors")) ? console.log("PLAYER WON!"):
     console.log("COMPUTER WON!");
+
+    console.log(computerSelection);
     
 } 
 
