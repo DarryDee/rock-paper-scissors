@@ -40,7 +40,6 @@ function playRound(playerSelection, computerSelection) {
 game();
 function game(){
 
-    for(let i = 0; i <= 4; i++){
-        playRound(getPlayerChoice(), getComputerChoice());
-    }
+    playRound(getPlayerChoice(), getComputerChoice())
+    
 }
