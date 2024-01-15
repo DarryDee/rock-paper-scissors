@@ -8,7 +8,6 @@ body{
     flex-wrap: wrap;
     height: 100vh;
     gap: 50px;
-
 }
 .computer-container,
 .player-container{
