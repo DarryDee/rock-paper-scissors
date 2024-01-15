@@ -5,6 +5,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     height: 100vh;
     gap: 50px;
 
@@ -31,9 +32,12 @@ img{
 
     height: 200px;
     width: 200px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 10px;
+    background-color: rgb(31, 41, 55);
 
 }
 
@@ -58,5 +62,12 @@ p{
 p{
     font-size:xx-large;
     font-weight: 700;
+}
+
+button{
+    
+    width: 100px;
+    background: transparent;
+    cursor: pointer;
 }
 
