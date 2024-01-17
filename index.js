@@ -9,38 +9,56 @@ const BotScissors = document.querySelector(".Computer-Scissors");
 const webpage = document.getElementById("webpage");
 const buttons = document.querySelectorAll("#button");
 
-let buttonColored = false;
-playerRock.addEventListener("click", (e)=>{
 
+let buttonColored = false;
+let playerCounter = 0;
+let computerCounter = 0;
+
+playerRock.addEventListener("click", ()=>{
+
+    //#region Color reset
     /*
     if(buttonColored) e.preventDefault();
     */
+   //#endregion
+
     const decision = playRound("Rock",getComputerChoice())
     console.log(decision);
     if(decision){   
+
         playerRock.style.background = "green";
         BotScissors.style.background = "red";
-        buttonColored = true;
+
+        playerCounter++;
+        document.getElementById("player-score").innerHTML = playerCounter.toString();
+
+        //#region Color reset
+        //buttonColored = true;
+        //#endregion
     }
     else if(decision === 0){
- 
+
         playerRock.style.background = "Aqua";
         BotRock.style.background = "Aqua";
-
     }
     else{
-
         playerRock.style.background = "red";
         BotPaper.style.background = "green"; 
+
+        computerCounter++;
+        document.getElementById("computer-score").innerHTML = computerCounter.toString();
     }
 
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
+
+            //#region  Color reset
             /*
             buttonColored = false;
             preventDefaultEnabled = false;
             */
+           //#endregion
         })
     },1000)
 
@@ -53,46 +71,62 @@ playerPaper.addEventListener("click", ()=>{
         
         playerPaper.style.background = "green";
         BotRock.style.background = "red";
+
+        playerCounter++;
+        document.getElementById("player-score").innerHTML = playerCounter.toString();
     }
 
     else if(decision === 0){
         playerPaper.style.background = "Aqua";
         BotPaper.style.background = "Aqua";
     }
+
     else{
         playerPaper.style.background = "red";
         BotScissors.style.background = "green";
+
+        computerCounter++;
+        document.getElementById("computer-score").innerHTML = computerCounter.toString();
     }
+
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
         })
     },1000)
 })
+playerScissors.addEventListener("click", () => {
 
-playerScissors.addEventListener("click", (e) => {
-
-    const decision =  playRound("Scissors",getComputerChoice())
+    const decision = playRound("Scissors",getComputerChoice())
 
     if(decision){
         playerScissors.style.background = "green";
         BotPaper.style.background = "red";
+
+        playerCounter++;
+        document.getElementById("player-score").innerHTML = playerCounter.toString();
     }
 
     else if(decision === 0){
         playerScissors.style.background = "Aqua";
         BotScissors.style.background = "Aqua";
     }
+
     else{
         playerScissors.style.background = "red";
         BotRock.style.background = "green";
+
+        computerCounter++;
+        document.getElementById("computer-score").innerHTML = computerCounter.toString();
     }
+
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
         })
     },1000)
 })
+
 function getComputerChoice(){
 
     let number = Math.floor(Math.random() * 3);

@@ -46,12 +46,6 @@ img{
     justify-content: space-between;
 }
 
-p{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .text{
     display:flex;
     flex-direction: row;
@@ -64,7 +58,6 @@ p{
 }
 
 button{
-    
     width: 100px;
     background: transparent;
     cursor: pointer;
