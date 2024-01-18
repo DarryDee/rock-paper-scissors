@@ -1,74 +1,63 @@
-const playerRock = document.querySelector(".Player-Rock"); 
-const playerPaper = document.querySelector(".Player-Paper");
-const playerScissors = document.querySelector(".Player-Scissors");
+const playerRock = document.getElementById("Player-Rock"); 
+const playerPaper = document.getElementById("Player-Paper");
+const playerScissors = document.getElementById("Player-Scissors");
 
-const BotRock = document.querySelector(".Computer-Rock"); 
-const BotPaper = document.querySelector(".Computer-Paper");
-const BotScissors = document.querySelector(".Computer-Scissors");
+const BotRock = document.getElementById("Computer-Rock"); 
+const BotPaper = document.getElementById("Computer-Paper");
+const BotScissors = document.getElementById("Computer-Scissors");
 
-const webpage = document.getElementById("webpage");
-const buttons = document.querySelectorAll("#button");
+const buttons = document.querySelectorAll(".button");
 
-
-let buttonColored = false;
 let playerCounter = 0;
 let computerCounter = 0;
 
-playerRock.addEventListener("click", ()=>{
 
-    //#region Color reset
-    /*
-    if(buttonColored) e.preventDefault();
-    */
-   //#endregion
+playerRock.addEventListener("click", ()=>{
 
     const decision = playRound("Rock",getComputerChoice())
     console.log(decision);
     if(decision){   
-
         playerRock.style.background = "green";
         BotScissors.style.background = "red";
 
         playerCounter++;
         document.getElementById("player-score").innerHTML = playerCounter.toString();
 
-        //#region Color reset
-        //buttonColored = true;
-        //#endregion
     }
-    else if(decision === 0){
 
+    else if(decision === 0){
         playerRock.style.background = "Aqua";
         BotRock.style.background = "Aqua";
     }
+
     else{
         playerRock.style.background = "red";
         BotPaper.style.background = "green"; 
 
         computerCounter++;
         document.getElementById("computer-score").innerHTML = computerCounter.toString();
+            
     }
 
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+    
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
+        })
 
-            //#region  Color reset
-            /*
-            buttonColored = false;
-            preventDefaultEnabled = false;
-            */
-           //#endregion
+        buttons.forEach(button => {
+            button.disabled = false;
         })
     },1000)
-
 })
 playerPaper.addEventListener("click", ()=>{
 
     const decision = playRound("Paper",getComputerChoice())
 
     if(decision){
-        
         playerPaper.style.background = "green";
         BotRock.style.background = "red";
 
@@ -88,13 +77,23 @@ playerPaper.addEventListener("click", ()=>{
         computerCounter++;
         document.getElementById("computer-score").innerHTML = computerCounter.toString();
     }
-
+    
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+    
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
         })
+
+        buttonColored = false;
+        buttons.forEach(button => {
+            button.disabled = false;
+        })
     },1000)
 })
+
 playerScissors.addEventListener("click", () => {
 
     const decision = playRound("Scissors",getComputerChoice())
@@ -120,12 +119,24 @@ playerScissors.addEventListener("click", () => {
         document.getElementById("computer-score").innerHTML = computerCounter.toString();
     }
 
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+    
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
         })
+
+        buttonColored = false;
+        buttons.forEach(button => {
+            button.disabled = false;
+        })
     },1000)
 })
+
+
+
 
 function getComputerChoice(){
 
