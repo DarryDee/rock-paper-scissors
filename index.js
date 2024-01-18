@@ -8,6 +8,8 @@ const BotScissors = document.getElementById("Computer-Scissors");
 
 const buttons = document.querySelectorAll(".button");
 
+const winnerText = document.getElementById("Winner")
+
 let playerCounter = 0;
 let computerCounter = 0;
 
@@ -21,7 +23,7 @@ playerRock.addEventListener("click", ()=>{
         BotScissors.style.background = "red";
 
         playerCounter++;
-        document.getElementById("player-score").innerHTML = playerCounter.toString();
+        document.getElementById("player-score").textContent = playerCounter.toString();
 
     }
 
@@ -35,23 +37,26 @@ playerRock.addEventListener("click", ()=>{
         BotPaper.style.background = "green"; 
 
         computerCounter++;
-        document.getElementById("computer-score").innerHTML = computerCounter.toString();
+        document.getElementById("computer-score").textContent = computerCounter.toString();
             
     }
 
+    console.log(computerCounter);
     buttons.forEach(button => {
         button.disabled = true;
     });
     
+    if(playerCounter === 5  || computerCounter === 5) {
+        AnnounceWinnner(playerCounter);
+    }
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
-        })
-
-        buttons.forEach(button => {
-            button.disabled = false;
+            buttons.disabled = false;
         })
     },1000)
+
+    
 })
 playerPaper.addEventListener("click", ()=>{
 
@@ -62,7 +67,7 @@ playerPaper.addEventListener("click", ()=>{
         BotRock.style.background = "red";
 
         playerCounter++;
-        document.getElementById("player-score").innerHTML = playerCounter.toString();
+        document.getElementById("player-score").textContent = playerCounter.toString();
     }
 
     else if(decision === 0){
@@ -75,23 +80,26 @@ playerPaper.addEventListener("click", ()=>{
         BotScissors.style.background = "green";
 
         computerCounter++;
-        document.getElementById("computer-score").innerHTML = computerCounter.toString();
+        document.getElementById("computer-score").textContent = computerCounter.toString();
     }
     
     buttons.forEach(button => {
         button.disabled = true;
     });
     
+    if(playerCounter === 5  || computerCounter === 5) {
+        AnnounceWinnner(playerCounter);
+    }
+
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
+            buttons.disabled = false;
         })
 
-        buttonColored = false;
-        buttons.forEach(button => {
-            button.disabled = false;
-        })
     },1000)
+
+    
 })
 
 playerScissors.addEventListener("click", () => {
@@ -103,7 +111,7 @@ playerScissors.addEventListener("click", () => {
         BotPaper.style.background = "red";
 
         playerCounter++;
-        document.getElementById("player-score").innerHTML = playerCounter.toString();
+        document.getElementById("player-score").textContent = playerCounter.toString();
     }
 
     else if(decision === 0){
@@ -116,26 +124,56 @@ playerScissors.addEventListener("click", () => {
         BotRock.style.background = "green";
 
         computerCounter++;
-        document.getElementById("computer-score").innerHTML = computerCounter.toString();
+        document.getElementById("computer-score").textContent = computerCounter.toString();
     }
 
     buttons.forEach(button => {
         button.disabled = true;
     });
     
+    if(playerCounter === 5  || computerCounter === 5) {
+        AnnounceWinnner(playerCounter);
+    }
     setTimeout(() => {
         buttons.forEach(buttons => {
             buttons.style.background = "transparent";
+            buttons.disabled = false;
         })
-
-        buttonColored = false;
-        buttons.forEach(button => {
-            button.disabled = false;
-        })
+        
     },1000)
+
+
 })
 
 
+ 
+function AnnounceWinnner(playerScore){
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
+
+    playerScore === 5 ? winnerText.textContent = "Player Won!" :
+    winnerText.textContent = "Computer Won!";
+
+    ResetGame();
+
+}
+
+function ResetGame(){
+
+    setTimeout(() =>{
+        winnerText.textContent = "";
+        document.getElementById("computer-score").textContent = "0";
+        document.getElementById("player-score").textContent = "0";
+        playerCounter = 0;
+        computerCounter = 0;
+    },2000)
+
+    buttons.forEach(button => {
+        button.disabled = false;
+    })
+}
 
 
 function getComputerChoice(){

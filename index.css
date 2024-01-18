@@ -62,4 +62,11 @@ button{
     background: transparent;
     cursor: pointer;
 }
+.container-text{
+    display: flex;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+}
+
 
