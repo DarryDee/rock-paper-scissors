@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock, Paper, Scissors</title>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js" defer></script>
+    </head> 
+
+    <body>
+        <div class="container" id="webpage">
+            <div class="Player">
+
+
+                <div class="player-container">
+                <img src="img/user-icon.png" alt="Player-Icon">
+                </div>
+
+                <div class="player-choice-buttons-container" id="button-container">
+
+                    <button class="button" id="Player-Rock">
+                        <img src="img/rock.png" alt="Rock-Micky mouse Emoji">
+                    </button>
+                    
+                    <button class="button" id="Player-Paper">
+                        <img src="img/paper.png" alt="Paper-Micky mouse Emoji">
+                    </button>
+
+                    <button class="button" id="Player-Scissors">
+                        <img src="img/scissors.png" alt="Scissors-Micky mouse Emoji">
+                    </button>
+                </div>
+                
+            </div>
+            <div class="container-text">
+                <div class="text">
+                    <div>
+                        <p id="player-score">0</p>
+                    </div>
+
+                    <div>
+                        <p>:</p>
+                    </div>
+                    
+                    <div>
+                        <p id= "computer-score">0</p>
+                    </div>
+                </div>
+
+                <div>
+                    <p id="Winner"></p>
+                </div>
+            </div>
+                    
+            <div class="Computer">
+                <div class="computer-container">
+                    <img src="img/computer-icon.png" alt="Computer-Icon">
+                </div>
+
+
+                
+                <div class="computer-choice-buttons-container">
+                    <button class="button" id="Computer-Rock">
+                        <img src="img/rock.png" alt="Rock-Micky mouse Emoji">
+                    </button>
+                    
+                    <button class="button" id="Computer-Paper">
+                        <img src="img/paper.png" alt="Paper-Micky mouse Emoji">
+                    </button>
+
+                    <button class="button" id="Computer-Scissors">
+                        <img src="img/scissors.png" alt="Scissors-Micky mouse Emoji">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
